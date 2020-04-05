@@ -1,0 +1,76 @@
+{% extends "plans/base.html" %}
+
+{% block content %}
+
+<div class="container">
+  <div class="card-deck mb-3 text-left">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Membership Settings</h4>
+      </div>
+      <div class="card-body">
+        <p>Basic Information</p>
+        <ul class="list-unstyled mt-3 mb-4">
+          {% if profile == None %}
+              <a href="{% url 'add_profile' %}" class="btn btn-small btn-primary float-right" >Add profile info</a>
+          {% else %}
+{#              <a href="{% url 'update_email' %}" class="btn btn-small btn-primary float-right" >Update email</a>#}
+          {% endif %}
+        </ul>
+{#          {{ email }} <br>#}
+          {{ profile.first_name |title }} {{ profile.last_name |title }} <br>
+          {{ profile.birth_date }} <br>
+        <hr>
+        <p>Emergency Information</p>
+        <ul class="list-unstyled mt-3 mb-4">
+          {% if emergency_profile == None %}
+              <a href="{% url 'emergency_profile' %}" class="btn btn-small btn-primary float-right" >Add emergency contact info</a>
+          {% else %}
+              <a href="{% url 'emergency_profile' %}" class="btn btn-small btn-primary float-right" >Update emergency contact</a>
+          {% endif %}
+        </ul>
+          {{ emergency_profile.emergency_email }} <br>
+          {{ emergency_profile.emergency_first_name |title }} {{ emergency_profile.emergency_last_name |title }} <br>
+        <hr>
+         <p>Plan Details and Billing</p>
+        <ul class="list-unstyled mt-3 mb-4">
+          {% if cancel_at_period_end %}
+          Your membership will be cancelled after the end of your billing cycle ( {{ last_day_show }} )
+{#          <a href="{% url 'join' %}" class="btn btn-small btn-primary float-right" >Rejoin</a>#}
+          {% elif membership %}
+          Your membership is activate untill the end of your billing cycle ( {{ last_day_show }} )
+          <form action="{% url 'settings' %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Cancel Membership" class="btn btn-small btn-primary float-right">
+          </form>
+          {% else %}
+          <a href="{% url 'join' %}" class="btn btn-small btn-primary float-right" >Join</a>
+          {% endif %}
+        <br>
+        <hr>
+        <p>Contact Us</p>
+        <ul class="list-unstyled mt-3 mb-4">
+            <p>(646) 821-2588</p>
+        </ul>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+{#<p>#}
+{#share, faq, forgot password, membership, pictures, flow, upgrade plans#}
+{#</p>#}
+
+
+
+{% endblock content %}
+
+
+
