@@ -51,6 +51,9 @@ def join(request):
 def get_started(request):
     return render(request, 'plans/get_started.html')
 
+def privacy(request):
+    return render(request, 'registration/privacy.html')
+
 
 @login_required
 def checkout(request):

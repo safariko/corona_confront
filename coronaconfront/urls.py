@@ -38,6 +38,7 @@ urlpatterns = [
     path('emergency_profile/', views.emergency_profile, name='emergency_profile'),
 
     path('supportme/', views.reimburse, name='reimburse'),
+    path('privacy/', views.privacy, name='privacy'),
 
     path('account_activation_sent/', views.account_activation_sent, name='account_activation_sent'),
     path('activate/<slug:uidb64>/<slug:token>/', views.activate, name='activate'),
