@@ -106,26 +106,6 @@ def checkout(request):
 
 
 
-def settings(request):
-    membership = False
-    cancel_at_period_end = False
-    if request.method == 'POST':
-        subscription = stripe.Subscription.retrieve(request.user.customer.stripe_subscription_id)
-        subscription.cancel_at_period_end = True
-        request.user.customer.cancel_at_period_end = True
-        cancel_at_period_end = True
-        subscription.save()
-        request.user.customer.save()
-    else:
-        try:
-            if request.user.customer.membership:
-                membership = True
-            if request.user.customer.cancel_at_period_end:
-                cancel_at_period_end = True
-        except Customer.DoesNotExist:
-            membership = False
-    return render(request, 'registration/settings.html', {'membership':membership,
-    'cancel_at_period_end':cancel_at_period_end})
 
 @user_passes_test(lambda u: u.is_superuser)
 def updateaccounts(request):

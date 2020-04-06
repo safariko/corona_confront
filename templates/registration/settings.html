@@ -18,8 +18,8 @@
           {% endif %}
         </ul>
 {#          {{ email }} <br>#}
-          {{ profile.first_name |title }} {{ profile.last_name |title }} <br>
-          {{ profile.birth_date }} <br>
+          {{ profile.first_name |default_if_none:"" |title }} {{ profile.last_name |default_if_none:"" |title }} <br>
+          {{ profile.birth_date |default_if_none:"" }} <br>
         <hr>
         <p>Emergency Information</p>
         <ul class="list-unstyled mt-3 mb-4">
@@ -38,13 +38,13 @@
           Your membership will be cancelled after the end of your billing cycle ( {{ last_day_show }} )
 {#          <a href="{% url 'join' %}" class="btn btn-small btn-primary float-right" >Rejoin</a>#}
           {% elif membership %}
-          Your membership is activate untill the end of your billing cycle ( {{ last_day_show }} )
+          Your membership is active untill the end of your billing cycle ( {{ last_day_show }} )
           <form action="{% url 'settings' %}" method="POST">
             {% csrf_token %}
             <input type="submit" value="Cancel Membership" class="btn btn-small btn-primary float-right">
           </form>
           {% else %}
-          <a href="{% url 'join' %}" class="btn btn-small btn-primary float-right" >Join</a>
+          <a href="{% url 'get_started' %}" class="btn btn-small btn-primary float-right" >Join</a>
           {% endif %}
         <br>
         <hr>
