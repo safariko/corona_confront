@@ -52,8 +52,57 @@ def privacy(request):
     return render(request, 'registration/privacy.html')
 
 
+# @login_required
+# def checkout(request):
+#     try:
+#         if request.user.customer.membership:
+#             return redirect('settings')
+#     except Customer.DoesNotExist:
+#         pass
+#     #
+#     # try:
+#     #     customer = request.user.customer
+#     # except Customer.DoesNotExist:
+#     #     customer = None
+#
+#
+#     if request.method == 'POST':
+#         stripe_customer = stripe.Customer.create(email=request.user.email, source=request.POST['stripeToken'])
+#         plan = 'plan_GxpMxlrunLqmnbx'
+#         if request.POST['plan'] == 'yearly':
+#             plan = 'plan_H3IJhGR3Q5BSRC'
+#         subscription = stripe.Subscription.create(customer=stripe_customer.id, items=[{'plan':plan}])
+#
+#         customer = Customer()
+#         customer.user = request.user
+#         customer.stripeid = stripe_customer.id
+#         customer.membership = True
+#         customer.cancel_at_period_end = False
+#         customer.stripe_subscription_id = subscription.id
+#         customer.last_day_membership = datetime.now()+relativedelta(months=+1)
+#         if request.POST['plan'] == 'yearly':
+#             customer.last_day_membership = datetime.now()+relativedelta(months=+3)
+#         customer.save()
+#
+#         return redirect('home')
+#     else:
+#         plan = 'monthly'
+#         price = 900
+#         og_dollar = 9
+#         final_dollar = 9
+#         if request.method == 'GET' and 'plan' in request.GET:
+#             if request.GET['plan'] == 'yearly':
+#                 plan = '3-month'
+#                 price = 2500
+#                 og_dollar = 25
+#                 final_dollar = 25
+#         return render(request, 'plans/checkout.html',
+#         {'plan':plan,'price':price,'og_dollar':og_dollar,
+#         'final_dollar':final_dollar})
+
 @login_required
 def checkout(request):
+
     try:
         if request.user.customer.membership:
             return redirect('settings')
@@ -65,15 +114,13 @@ def checkout(request):
     except Customer.DoesNotExist:
         customer = None
 
-
     if request.method == 'POST':
         stripe_customer = stripe.Customer.create(email=request.user.email, source=request.POST['stripeToken'])
-        plan = 'plan_GxpMxlrunLqmnbx'
+        plan = 'plan_GxpMxlrunLqmnb'
         if request.POST['plan'] == 'yearly':
             plan = 'plan_H3IJhGR3Q5BSRC'
         subscription = stripe.Subscription.create(customer=stripe_customer.id, items=[{'plan':plan}])
 
-        # customer = Customer()
         customer.user = request.user
         customer.stripeid = stripe_customer.id
         customer.membership = True
@@ -92,16 +139,14 @@ def checkout(request):
         final_dollar = 9
         if request.method == 'GET' and 'plan' in request.GET:
             if request.GET['plan'] == 'yearly':
-                plan = '3-month'
+                plan = 'yearly'
                 price = 2500
                 og_dollar = 25
                 final_dollar = 25
+
         return render(request, 'plans/checkout.html',
-        {'plan':plan,'price':price,'og_dollar':og_dollar,
+        {'plan':plan, 'price':price,'og_dollar':og_dollar,
         'final_dollar':final_dollar})
-
-
-
 
 
 

@@ -4,14 +4,13 @@
   <div class="row justify-content-center">
       <div class="col-md-4 order-md-2 mb-4">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
-          <span class="text-muted">Checkout</span>
+          <span class="text-muted">Corona Confront</span>
           <span class="badge badge-secondary badge-pill">1</span>
         </h4>
         <ul class="list-group mb-3">
           <li class="list-group-item d-flex justify-content-between lh-condensed">
             <div>
-              <h6 class="my-0">Corona Confront Contribution</h6>
-              <small class="text-muted">{{ plan|title }}</small>
+              <h6 class="my-0">Corona Confront Membership</h6>
             </div>
             <span class="text-muted">${{ og_dollar }}</span>
           </li>
@@ -22,6 +21,7 @@
         </ul>
 
 
+
         <div class="text-center pt-3">
         <form action="{% url 'checkout' %}" method="POST">
           {% csrf_token %}
@@ -29,7 +29,7 @@
             src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="pk_test_QQSrVpvVW8GrTBDOJa7H6EIt00WC2blhPZ"
             data-amount="{{ price }}"
-            data-name="Corona Confront, LLC"
+            data-name="Nick Fitness, LLC"
             data-email="{{ user.email }}"
             data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
             data-locale="auto">
@@ -40,5 +40,7 @@
         </div>
       </div>
       </div>
+
+
 
 {% endblock %}
