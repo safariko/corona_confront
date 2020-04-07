@@ -7,7 +7,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required, user_passes_test
 import stripe
 from django.http import HttpResponse
-from datetime import *; from dateutil.relativedelta import *
+from datetime import *
+from dateutil.relativedelta import *
 
 
 from .models import User
@@ -18,10 +19,6 @@ from django.template.loader import render_to_string
 from .tokens import account_activation_token
 
 from decouple import config
-
-
-
-
 
 
 
@@ -71,9 +68,9 @@ def checkout(request):
 
     if request.method == 'POST':
         stripe_customer = stripe.Customer.create(email=request.user.email, source=request.POST['stripeToken'])
-        plan = 'plan_GxpNCYlPPvtzTA'
+        plan = 'plan_GxpMxlrunLqmnbx'
         if request.POST['plan'] == 'yearly':
-            plan = 'plan_GxpMxlrunLqmnb'
+            plan = 'plan_H3IJhGR3Q5BSRC'
         subscription = stripe.Subscription.create(customer=stripe_customer.id, items=[{'plan':plan}])
 
         # customer = Customer()
