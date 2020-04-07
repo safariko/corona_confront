@@ -17,7 +17,7 @@
 {#              <a href="{% url 'update_email' %}" class="btn btn-small btn-primary float-right" >Update email</a>#}
           {% endif %}
         </ul>
-{#          {{ email }} <br>#}
+          {{ user.email }} <br>
           {{ profile.first_name |default_if_none:"" |title }} {{ profile.last_name |default_if_none:"" |title }} <br>
           {{ profile.birth_date |default_if_none:"" }} <br>
         <hr>
@@ -35,16 +35,14 @@
          <p>Plan Details and Billing</p>
         <ul class="list-unstyled mt-3 mb-4">
           {% if cancel_at_period_end %}
-          Your membership will be cancelled after the end of your billing cycle ( {{ last_day_show }} )
+          Your membership will be cancelled after your billing cycle ends on {{ last_day_show }}
 {#          <a href="{% url 'join' %}" class="btn btn-small btn-primary float-right" >Rejoin</a>#}
           {% elif membership %}
-          Your membership is active untill the end of your billing cycle ( {{ last_day_show }} )
-          <form action="{% url 'settings' %}" method="POST">
-            {% csrf_token %}
-            <input type="submit" value="Cancel Membership" class="btn btn-small btn-primary float-right">
-          </form>
-          {% else %}
-          <a href="{% url 'get_started' %}" class="btn btn-small btn-primary float-right" >Join</a>
+          Your membership is active untill the end of your billing cycle on {{ last_day_show }}
+          <a href="{% url 'cancel_insurance' %}" class="btn btn-small btn-danger float-right" >Cancel</a>
+
+{#          {% else %}#}
+{#          <a href="{% url 'get_started' %}" class="btn btn-small btn-primary float-right" >Join</a>#}
           {% endif %}
         <br><br>
         <hr>

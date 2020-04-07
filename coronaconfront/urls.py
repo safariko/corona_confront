@@ -32,6 +32,7 @@ urlpatterns = [
 
     path('get_started/', views.get_started, name='get_started'),
     path('new_status/', views.new_insurance, name='new_insurance'),
+    path('cancel/', views.cancel_insurance, name='cancel_insurance'),
     path('new_profile/', views.new_profile, name='new_profile'),
 
     path('add_profile/', views.add_profile, name='add_profile'),
