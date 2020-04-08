@@ -62,7 +62,7 @@ class Reimburse(models.Model):
     hosp_name  = models.CharField(max_length=200)
     hosp_location = models.CharField(max_length=200)
     deductible_amount = models.FloatField()
-    thumb = models.ImageField(upload_to='media/', default='')
+    # thumb = models.ImageField(upload_to='media/', default='')
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):

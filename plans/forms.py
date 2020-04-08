@@ -42,8 +42,8 @@ class ReimburseForm(forms.ModelForm):
 
     class Meta:
         model = Reimburse
-        fields = ['hosp_date', 'hosp_name', 'hosp_location', 'deductible_amount', 'thumb' ]
+        fields = ['hosp_date', 'hosp_name', 'hosp_location', 'deductible_amount' ]
         # fields = ['hosp_date', 'hosp_location', 'deductible_amount' ]
-        labels = {'hosp_date': 'Hospitalization Date ', 'hosp_name': 'Hospital Name ', 'hosp_location': 'Hospital Location', 'deductible_amount': 'Deductible Amount', 'thumb': 'Hospital Bill'}
+        labels = {'hosp_date': 'Hospitalization Date ', 'hosp_name': 'Hospital Name ', 'hosp_location': 'Hospital Location', 'deductible_amount': 'Deductible Amount'}
             # labels = {'hosp_date': 'Cremation Date ', 'hosp_location': 'Cremation Location', 'deductible_amount': 'Cremation Cost'}
 
