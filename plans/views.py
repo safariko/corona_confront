@@ -29,18 +29,6 @@ def home(request):
     plans = FitnessPlan.objects
     return render(request, 'plans/home.html', {'plans':plans})
 
-def plan(request,pk):
-    plan = get_object_or_404(FitnessPlan, pk=pk)
-    if plan.premium :
-        if request.user.is_authenticated:
-            try:
-                if request.user.customer.membership:
-                    return render(request, 'plans/plan.html', {'plan':plan})
-            except Customer.DoesNotExist:
-                    return redirect('join')
-        return redirect('join')
-    else:
-        return render(request, 'plans/plan.html', {'plan':plan})
 
 def join(request):
     return render(request, 'plans/join.html')
@@ -69,7 +57,7 @@ def checkout(request):
     if request.method == 'POST':
         stripe_customer = stripe.Customer.create(email=request.user.email, source=request.POST['stripeToken'])
         plan = 'plan_GxpMxlrunLqmnb'
-        if request.POST['plan'] == 'yearly':
+        if request.POST['plan'] == '3monthly':
             plan = 'plan_H3IJhGR3Q5BSRC'
         subscription = stripe.Subscription.create(customer=stripe_customer.id, items=[{'plan':plan}])
 
@@ -79,7 +67,7 @@ def checkout(request):
         customer.cancel_at_period_end = False
         customer.stripe_subscription_id = subscription.id
         customer.last_day_membership = datetime.now()+relativedelta(months=+1)
-        if request.POST['plan'] == 'yearly':
+        if request.POST['plan'] == '3monthly':
             customer.last_day_membership = datetime.now()+relativedelta(months=+3)
         customer.save()
 
@@ -90,8 +78,8 @@ def checkout(request):
         og_dollar = 9
         final_dollar = 9
         if request.method == 'GET' and 'plan' in request.GET:
-            if request.GET['plan'] == 'yearly':
-                plan = 'yearly'
+            if request.GET['plan'] == '3monthly':
+                plan = '3monthly'
                 price = 2500
                 og_dollar = 25
                 final_dollar = 25

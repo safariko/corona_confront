@@ -34,8 +34,6 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 
 
-
-
 LOGIN_URL='login'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_URL = 'home'
@@ -133,12 +131,6 @@ AUTHENTICATION_BACKENDS = {
     'social_core.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 }
-
-
-
-
-
-
 
 
 
