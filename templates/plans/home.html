@@ -7,10 +7,23 @@
   <h1 class="display-4">Corona Confront</h1>
 <br><br><p class="lead">Many insured people in America still have to pay deductibles if they get coronavirus and require hospital stays.<br>
   <p class="lead">We decided to form a membership organization that reimburses deductibles of hospitalized members up to 100%.</p>
-{#  <p class="lead">Cremation is becoming a more acceptable service due to coronavirus.<br>#}
-{#  <p class="lead">We decided to form a membership organization that reimburses cremation services if your loved one is lost to coronavirus.#}
-    <p class="lead">Given low mortality and high infection rates, this model allows for the society to support families of the least lucky ones.</p> <br> <br> <br>
+
   <a href="{% url 'get_started' %}"><button type="button" class="btn btn-lg btn-primary">Get Started </button></a> <br> <br> <br> <br>
+
+<div class="container">
+
+  <h3>Trending Articles</h3>
+  <ul>
+
+      <embed src="https://www.google.com" style="width:500px; height: 300px;">
+{#    {% for plan in plans.all %}#}
+{##}
+{#    <li><a href="{% url 'plan' plan.id %}">{{ plan.title }}</a></li>#}
+{##}
+{#    {% endfor %}#}
+  </ul>
+</div>
+
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=https://coronaconfront.com/"><img src="{% static "facebook.png" %}" id="facebook" height="42" width="42"></a>
 
@@ -22,38 +35,10 @@
 <br>  <h3>Share Buttons</h3>
 
 
-
-{#<a href="https://wa.me/?text=">Share on WhatsApp</a>#}
-{##}
-{#<a href="sms:?body=">Share on SMS</a>#}
-
-{#<a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=CoronaConfront.com%0AHelp%20each%20other%20protect%20against%20high%20deductibles%20during%20coronavirus%20pandemic!">#}
-{#Share on Twitter#}
-{#</a>#}
-
-{#<script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>#}
-{#<script type="IN/Share" data-url="https://www.coronaconfront.com"></script>#}
-
 </div>
 
-</div>
 
-{#<div class="container">#}
-{##}
-{#  <h3>Trending Articles</h3>#}
-{#  <ul>#}
-{#    {% for plan in plans.all %}#}
-{##}
-{#    <li><a href="{% url 'plan' plan.id %}">{{ plan.title }}</a></li>#}
-{##}
-{#    {% endfor %}#}
-{#  </ul>#}
-{#</div>#}
 
-{#<script>#}
-{#     var mobile = (/iphone|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));#}
-{#     if (mobile === false) {$('.content-desktop').hide();}#}
-{#</script>#}
 
 
 {% endblock %}

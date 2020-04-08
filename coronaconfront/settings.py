@@ -203,3 +203,7 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool)
 
 DEFAULT_FROM_EMAIL = 'CoronaConfront Team <noreply@mg.coronaconfront.com>'
 EMAIL_SUBJECT_PREFIX = '[Corona Confront] '
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = '/media/'
