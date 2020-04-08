@@ -39,7 +39,7 @@ class Customer(models.Model):
     stripe_subscription_id = models.CharField(max_length=255)
     cancel_at_period_end = models.BooleanField(default=False)
     membership = models.BooleanField(default=False)
-    insurance_exists = models.CharField(max_length=3, choices=INSURANCE_CHOICES, default = 'YES')
+    insurance_exists = models.CharField(max_length=3, choices=INSURANCE_CHOICES, default = 'NO')
     first_name = models.CharField(max_length=200, null=True)
     last_name = models.CharField(max_length=200, null=True)
     birth_date = models.DateField(null=True)
