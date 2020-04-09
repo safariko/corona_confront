@@ -23,7 +23,7 @@ from decouple import config
 
 
 
-stripe.api_key = "pk_live_FqEci7lCGv1T0M2GcErtoOXq00nBeeeDgM"
+stripe.api_key = config("STRIPE_SECRET_KEY")
 
 def home(request):
     plans = FitnessPlan.objects
