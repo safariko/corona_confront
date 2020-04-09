@@ -34,11 +34,11 @@ urlpatterns = [
     path('cancel/', views.cancel_insurance, name='cancel_insurance'),
     path('new_profile/', views.new_profile, name='new_profile'),
 
-    path('add_profile/', views.add_profile, name='add_profile'),
     path('emergency_profile/', views.emergency_profile, name='emergency_profile'),
 
     path('supportme/', views.reimburse, name='reimburse'),
     path('privacy/', views.privacy, name='privacy'),
+    path('confirmation/', views.confirmation, name='confirmation'),
 
     path('account_activation_sent/', views.account_activation_sent, name='account_activation_sent'),
     path('activate/<slug:uidb64>/<slug:token>/', views.activate, name='activate'),

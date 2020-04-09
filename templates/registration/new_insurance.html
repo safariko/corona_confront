@@ -5,8 +5,6 @@
 
 </div>
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-{#  <h1 class="display-5">Insurance Information</h1>#}
-{#  <h1 class="display-5">Current Health Status</h1>#}
   <p class="lead"></p>
 </div>
 
@@ -14,8 +12,7 @@
   <div class="card-deck mb-3 text-center">
     <div class="card mb-4 shadow-sm">
       <div class="card-header">
-        <h4 class="my-0 font-weight-normal">Do you have medical insurance for the next 3 months? (yes to proceed)</h4>
-{#        <h4 class="my-0 font-weight-normal">Have you already been hospitalized due to coronavirus?</h4>#}
+        <h4 class="my-0 font-weight-normal">Do you have medical insurance for the next 3 months?</h4>
       </div>
       <div class="card-body">
         <ul class="list-unstyled mt-3 mb-4">
@@ -41,7 +38,7 @@ $('#id_insurance_exists').on('change',function disappear(){
     }
     if( $(this).val()==="YES"){
     $("#insurance_yes").show()
-    $("#insurance_no").hide()
+    $("#insurance_no").show()
     }
 });
 </script>

@@ -39,6 +39,21 @@ def get_started(request):
 def privacy(request):
     return render(request, 'registration/privacy.html')
 
+@login_required
+def confirmation(request):
+    if request.user.customer.membership:
+        membership = True
+    else:
+        membership = False
+    try:
+        last_day_show = request.user.customer.last_day_membership
+    except:
+        last_day_show = None
+
+
+
+
+    return render(request, 'registration/confirmation.html', {'last_day_show': last_day_show, 'membership': membership})
 
 @login_required
 def checkout(request):
@@ -71,7 +86,7 @@ def checkout(request):
             customer.last_day_membership = datetime.now()+relativedelta(months=+3)
         customer.save()
 
-        return redirect('home')
+        return redirect('confirmation')
     else:
         plan = 'monthly'
         price = 900
@@ -200,24 +215,6 @@ def new_profile(request):
     context = {'form': form}
     return render(request, 'registration/new_profile.html', context)
 
-@login_required
-def add_profile(request):
-    """Add a new topic."""
-    if request.method != 'POST':
-        # No data submitted; create a blank form.
-        form = ProfileForm()
-    else:
-        # POST data submitted; process data.
-        form = ProfileForm(data=request.POST)
-        if form.is_valid():
-            add_profile = form.save(commit=False)
-            add_profile.owner = request.user
-            add_profile.save()
-            return redirect('settings')
-
-    # Display a blank or invalid form.
-    context = {'form': form}
-    return render(request, 'registration/add_profile.html', context)
 
 @login_required
 def reimburse(request):
@@ -270,13 +267,6 @@ def settings(request):
     membership = False
     cancel_at_period_end = False
     if request.method != 'POST':
-    #     subscription = stripe.Subscription.retrieve(request.user.customer.stripe_subscription_id)
-    #     subscription.cancel_at_period_end = True
-    #     request.user.customer.cancel_at_period_end = True
-    #     cancel_at_period_end = True
-    #     subscription.save()
-    #     request.user.customer.save()
-    # else:
         try:
             if request.user.customer.membership:
                 membership = True
@@ -284,7 +274,7 @@ def settings(request):
                 cancel_at_period_end = True
         except Customer.DoesNotExist:
             membership = False
-    #
+
     # """Show all topics."""
 
     try:

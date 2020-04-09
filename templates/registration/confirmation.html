@@ -2,25 +2,21 @@
 {% load static %}
 
 {% block content %}
+<br> <br> <br> <br>
+<br> <br> <br> <br>
 
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-  <h1 class="display-4">Corona Confront</h1>
-<br><br><p class="lead">Many insured people in America still have to pay deductibles if they get coronavirus and require hospital stays.<br><br>
-  <p class="lead">We decided to form a membership organization that reimburses deductibles of hospitalized members up to 100%.</p> <br><br>
+  {% if membership %}
+      <p class="lead">Thank you very much! Your subscription will last until {{ last_day_show |default_if_none:"" }}</p> <br><br>
+      <p class="lead">Your subscription will be automatically renewed unless you cancel it or the US defeats coronavirus.</p> <br><br>
+  {% else %}
+      <p class="lead">Your payment did not go through. Please try again.</p> <br><br>
+  {% endif %}
 
-  <a href="{% url 'get_started' %}"><button type="button" class="btn btn-lg btn-primary">Get Started </button></a> <br> <br> <br> <br>
 
 <br> <br> <br> <br>
 
-</div>
-<br><br>
 
-<div class="container">
-
-<h2  align="center">Why do we need Corona Confront now?</h2>
-<br>
-
-    <iframe src="https://www.nationalmemo.com/why-all-americans-still-cant-get-free-coronavirus-treatment/" width=900 height=700" sandbox=""></iframe>
 
 </div>
 
@@ -34,6 +30,8 @@
 
   <a href="http://compose.mail.yahoo.com/?subject=Help%20each%20other%20protect%20against%20high%20deductibles%20during%20coronavirus%20pandemic!&body=www.coronaconfront.com"><img src="{% static "yahoo.png" %}" id="yahoo" height="62" width="62"></a><br>
 <br>
+  <p class="lead">Share CoronaConfront with friends to grow organizational funds</p> <br><br>
+
 </div>
 
 {% endblock %}
