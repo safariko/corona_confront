@@ -23,7 +23,7 @@ from decouple import config
 
 
 
-stripe.api_key = "sk_test_zW5Sa86z9OmrDpbSChZBnzkI008rfLxzEy"
+stripe.api_key = config("STRIPE_SECRET_KEY")
 
 def home(request):
     plans = FitnessPlan.objects
@@ -71,9 +71,9 @@ def checkout(request):
 
     if request.method == 'POST':
         stripe_customer = stripe.Customer.create(email=request.user.email, source=request.POST['stripeToken'])
-        plan = 'plan_GxpMxlrunLqmnb'
+        plan = 'plan_H3uyzsIvrQNhi7'
         if request.POST['plan'] == '3monthly':
-            plan = 'plan_H3IJhGR3Q5BSRC'
+            plan = 'plan_H3uzl32jJull1k'
         subscription = stripe.Subscription.create(customer=stripe_customer.id, items=[{'plan':plan}])
 
         customer.user = request.user
