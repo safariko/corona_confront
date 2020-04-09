@@ -22,7 +22,7 @@
             <form action="{% url 'new_insurance' %}" method='post'>
               {% csrf_token %}
               {{ form.as_p }}
-              <input type="submit" id="insurance_yes" value="Next" style="display: none;" class="btn btn-lg btn-primary float-right">
+              <input type="submit" id="insurance_yes" value="Next"  class="btn btn-lg btn-primary float-right">
               <a href="{% url 'get_started' %}"><button type="button" id="insurance_no" class="btn btn-lg btn-danger float-left">Back</button></a>
             </form>
         </ul>
@@ -33,16 +33,15 @@
 </div>
 
 
-
 <script>
-$('#id_insurance_exists').on('change',function(){
+$('#id_insurance_exists').on('change',function disappear(){
+    if( $(this).val()==="NO"){
+    $("#insurance_yes").hide()
+    $("#insurance_no").show()
+    }
     if( $(this).val()==="YES"){
     $("#insurance_yes").show()
     $("#insurance_no").hide()
-    }
-    else{
-    $("#insurance_yes").hide()
-    $("#insurance_no").show()
     }
 });
 </script>
