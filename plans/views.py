@@ -23,7 +23,7 @@ from decouple import config
 
 
 
-stripe.api_key = config("STRIPE_SECRET_KEY")
+stripe.api_key = "pk_live_FqEci7lCGv1T0M2GcErtoOXq00nBeeeDgM"
 
 def home(request):
     plans = FitnessPlan.objects
@@ -49,8 +49,6 @@ def confirmation(request):
         last_day_show = request.user.customer.last_day_membership
     except:
         last_day_show = None
-
-
 
 
     return render(request, 'registration/confirmation.html', {'last_day_show': last_day_show, 'membership': membership})
@@ -305,6 +303,7 @@ def settings(request):
 
 
 def account_activation_sent(request):
+
     return render(request, 'registration/account_activation_sent.html')
 
 def activate(request, uidb64, token):
@@ -342,7 +341,7 @@ def register(request):
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                 'token': account_activation_token.make_token(user),
             })
-            user.email_user(subject, '', html_message=message)
+            user.email_user(subject, message)
             return redirect('account_activation_sent')
     else:
         form = CustomSignupForm()
@@ -350,14 +349,3 @@ def register(request):
 
 
 
-# class SignUp(generic.CreateView):
-#     form_class = CustomSignupForm
-#     success_url = reverse_lazy('home')
-#     template_name = 'registration/signup.html'
-#
-#     def form_valid(self, form):
-#         valid = super(SignUp, self).form_valid(form)
-#         email, password = form.cleaned_data.get('email'), form.cleaned_data.get('password1')
-#         new_user = authenticate(email=email, password=password)
-#         auth_login(self.request, new_user)
-#         return valid
