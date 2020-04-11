@@ -1,5 +1,5 @@
 {% extends 'plans/base.html' %}
-
+{% load static %}
 
 {% block content %}
   <div class="row justify-content-center">
@@ -14,12 +14,8 @@
             <button type="submit" class="btn btn-primary">Log in</button>
 <br>
 <br>
-            <button type="submit" class="btn btn-primary" >
-                <a href="{% url 'social:begin' 'google-oauth2' %}" style="color:white;">Continue with Google</a>
-            </button>
-
-
-          </form>
+            <a href="{% url 'social:begin' 'facebook' %}"><img src="{% static "login_facebook.png"%}" width=180 height=40></a>      
+    </form>
         </div>
         <div class="card-footer text-muted text-center">
           New to Corona Confront? <a href="{% url 'signup' %}">Sign up</a>

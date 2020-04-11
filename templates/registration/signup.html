@@ -1,5 +1,5 @@
 {% extends 'plans/base.html' %}
-
+{% load static %}
 
 {% block content %}
   <div class="row justify-content-center">
@@ -11,11 +11,10 @@
             {% csrf_token %}
             {% include 'includes/form.html' %}
             <button type="submit" class="btn btn-primary">Create an account</button>
+<br><br>	<a href="{% url 'social:begin' 'facebook' %}"><img src="{% static "login_facebook.png"%}" width=180 height=40></a>
+
 <br>
 <br>
-            <button type="submit" class="btn btn-primary" >
-                <a href="{% url 'social:begin' 'google-oauth2' %}" style="color:white;">Continue with Google</a>
-            </button>
             </form>
         </div>
         <div class="card-footer text-muted text-center">

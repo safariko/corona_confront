@@ -95,19 +95,16 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '251881686072-jepk0mrno2j8pirvusvro5nbskm5kf3o.a
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'yXiZcxwVb_HQIWB6JxKwNeQM'
 
 
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_gender', 'user_location', 'user_birthday']
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
-  'fields': 'id, name, first_name, last_name, email, picture.type(large), gender, location, birthday'
+  'fields': 'id, name, first_name, last_name, email'
 }
+
 SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
     ('name', 'name'),
     ('first_name', 'first_name'),
     ('last_name', 'last_name'),
-    ('email', 'email'),
-    ('picture', 'picture'),
-    ('gender', 'gender'),
-    ('location', 'location'),
-    ('birthday', 'birthday'),
+    ('email', 'email')
 ]
 
 # SOCIAL_AUTH_GOOGLE_OAUTH2_IGNORE_DEFAULT_SCOPE = True
