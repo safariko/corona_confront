@@ -1,7 +1,6 @@
 from django.contrib import admin
-from .models import FitnessPlan, Reimburse, EmergencyProfile, Customer
+from .models import Reimburse, EmergencyProfile, Customer
 
-admin.site.register(FitnessPlan)
 admin.site.register(Reimburse)
 admin.site.register(EmergencyProfile)
 admin.site.register(Customer)

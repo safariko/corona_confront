@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .forms import CustomSignupForm, InsuranceForm, ProfileForm, ReimburseForm, EmergencyProfileForm
 from django.urls import reverse_lazy
 from django.views import generic
-from .models import FitnessPlan, Customer, EmergencyProfile
+from .models import Customer, EmergencyProfile
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required, user_passes_test
 import stripe
@@ -26,8 +26,7 @@ from decouple import config
 stripe.api_key = config("STRIPE_SECRET_KEY")
 
 def home(request):
-    plans = FitnessPlan.objects
-    return render(request, 'plans/home.html', {'plans':plans})
+    return render(request, 'plans/home.html')
 
 
 def join(request):
