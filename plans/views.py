@@ -330,8 +330,10 @@ def register(request):
         form = CustomSignupForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.is_active = False
+            user.is_active = True
             user.save()
+            user.backend = 'django.contrib.auth.backends.ModelBackend'
+            login(request, user)
             current_site = get_current_site(request)
             subject = 'Activate Your CoronaConfront Account'
             message = render_to_string('registration/account_activation_email.html', {
@@ -341,7 +343,7 @@ def register(request):
                 'token': account_activation_token.make_token(user),
             })
             user.email_user(subject, message)
-            return redirect('account_activation_sent')
+            return redirect('home')
     else:
         form = CustomSignupForm()
     return render(request, 'registration/signup.html', {'form': form})
