@@ -145,7 +145,7 @@ def cancel_insurance(request):
     'cancel_at_period_end':cancel_at_period_end, 'last_day_show': last_day_show })
 
 
-@login_required
+@login_required(login_url='signup')
 def new_insurance(request):
     try:
         if request.user.customer.membership:
@@ -343,7 +343,7 @@ def register(request):
                 'token': account_activation_token.make_token(user),
             })
             user.email_user(subject, message)
-            return redirect('home')
+            return redirect('new_insurance')
     else:
         form = CustomSignupForm()
     return render(request, 'registration/signup.html', {'form': form})
