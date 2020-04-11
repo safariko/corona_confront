@@ -18,7 +18,7 @@ class User(AbstractUser):
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
+from django.core.validators import MinLengthValidator
 
 
 INSURANCE_CHOICES= [
@@ -28,10 +28,6 @@ INSURANCE_CHOICES= [
 
 
 
-class FitnessPlan(models.Model):
-    title = models.CharField(max_length=255)
-    text = models.TextField()
-    premium = models.BooleanField(default=True)
 
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -62,6 +58,11 @@ class Reimburse(models.Model):
     hosp_name  = models.CharField(max_length=200)
     hosp_location = models.CharField(max_length=200)
     deductible_amount = models.FloatField()
+    address_one  = models.CharField(max_length=200)
+    address_two = models.CharField(max_length=200, blank=True)
+    city = models.CharField(max_length=100)
+    state = models.CharField(max_length=50)
+    zip_code = models.IntegerField()
     # thumb = models.ImageField(upload_to='media/', default='')
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
