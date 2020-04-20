@@ -1,4 +1,4 @@
-# nickfitness_project_localhost for Windows
+# for Windows
 
 cd nickfitness_project_localhost_master
 
@@ -17,7 +17,7 @@ python3 manage.py migrate
 python3 manage.py runserver
 
 
-# nickfitness_project_localhost for MacOS
+# for MacOS
 
 cd nickfitness_project_localhost_master
 
