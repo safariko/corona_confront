@@ -1,6 +1,6 @@
 # for Windows
 
-cd nickfitness_project_localhost_master
+cd corona_confront_master
 
 python3 -m pip install --user virtualenv
 
@@ -19,7 +19,7 @@ python3 manage.py runserver
 
 # for MacOS
 
-cd nickfitness_project_localhost_master
+cd corona_confront_master
 
 sudo -H pip install virtualenv
 
