@@ -1,3 +1,6 @@
+You can see the site live on coronaconfront.com
+
+
 # for Windows
 
 cd corona_confront_master
