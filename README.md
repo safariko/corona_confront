@@ -1,4 +1,4 @@
-You can see the site live on coronaconfront.com
+You can see the site live on www.coronaconfront.com
 
 
 # for Windows
